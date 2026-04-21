@@ -273,13 +273,15 @@
                     <tbody id="itemList">
                         <!-- Data injected here -->
                     </tbody>
-                </table>
+</table>
             </div>
         </div>
     </div>
 
     <script>
-        fetch('/api/admin/data')
+       fetch(`${BACKEND_URL}/api/admin/data`, {
+        credentials: "include"
+        })
             .then(res => res.json())
             .then(data => {
                 document.getElementById('countItems').innerText = data.stats.totalItems;

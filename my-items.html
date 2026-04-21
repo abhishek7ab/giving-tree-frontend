@@ -73,7 +73,9 @@
     </div>
 
     <script>
-        fetch('/api/my-items/data')
+       fetch(`${BACKEND_URL}/api/my-items/data`, {
+        credentials: "include"
+        })
             .then(res => res.json())
             .then(data => {
                 const grid = document.getElementById('myItemsList');

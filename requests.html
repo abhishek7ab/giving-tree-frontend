@@ -212,7 +212,9 @@
     </div>
 
 <script>
-fetch('/api/activity/data')
+fetch(`${BACKEND_URL}/api/activity/data`, {
+    credentials: "include"
+})
 .then(res => res.json())
 .then(data => {
 

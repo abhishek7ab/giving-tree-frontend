@@ -157,7 +157,13 @@ function showToast(message, type = 'success') {
 }
 
 // --- 2. AUTH & IMPACT STATS LOGIC ---
-fetch('/api/user')
+fetch(`${BACKEND_URL}/api/user`, {
+    credentials: "include"
+})
+
+fetch(`${BACKEND_URL}/api/items/recent`, {
+    credentials: "include"
+})
 .then(res => res.json())
 .then(data => {
     const nav = document.getElementById('navLinks');
