@@ -88,6 +88,16 @@
 </head>
 
 <body>
+<div class="navbar">
+    <div class="logo">🌳 Giving Tree</div>
+    <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/items.html">Browse</a>
+        <a href="/post-item.html">Give Item</a>
+        <a href="/my-items.html">My Items</a>
+        <a href="https://giving-tree-backend.onrender.com/logout">Logout</a>
+    </nav>
+</div>
 
 <header class="items-header">
     <h1>Community Catalog</h1>
@@ -105,7 +115,7 @@
     const BACKEND_URL = "https://giving-tree-backend.onrender.com";
 
     function loadItems(query = '') {
-fetch(`${BACKEND_URL}/api/items/data?search=${query}`)
+fetch(`${BACKEND_URL}/api/items/data?search=${encodeURIComponent(query)}`)
         .then(res => res.json())
         .then(data => {
             let html = "";
@@ -164,7 +174,7 @@ function requestItem(itemId) {
         return res.text();
     })
     .then(data => {
-        alert("Request sent successfully ✅");
+        alert("🎉 Request sent successfully!");
         console.log(data);
     })
     .catch(err => {
