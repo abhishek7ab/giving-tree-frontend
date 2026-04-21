@@ -36,9 +36,11 @@
     </div>
 
     <nav class="nav-links" id="navLinks">
-        <a href="/">Home</a>
-        <a href="/items">Browse Items</a>
-        <a href="/post-item">Give Item</a>
+<a href="/index.html">Home</a>
+<a href="/items.html">Browse Items</a>
+<a href="/post-item.html">Give Item</a>
+
+<a href="https://giving-tree-backend.onrender.com/logout">Logout</a>
 
         <!-- 🔥 ADMIN (CONTROLLED BY JS) -->
         <a id="adminLink"
@@ -47,7 +49,10 @@
            🛡 Admin
         </a>
 
-        <a href="/logout">Logout</a>
+        <!-- 🔥 USER SECTION (CONTROLLED BY JS) -->
+        <a id="userLink" href="/my-items.html" style="display:none;">
+            👤 My Items
+        </a>
     </nav>
 </div>
 
@@ -170,7 +175,7 @@ fetch(`${BACKEND_URL}/api/items/recent`, {
     const nav = document.getElementById('navLinks');
     const welcome = document.getElementById('welcomeGreeting');
     const actions = document.getElementById('mainActions');
-    const baseNav = `<a href="/">Home</a><a href="/items">Browse Items</a>`;
+    const baseNav = `<a href="/index.html">Home</a><a href="/items.html">Browse Items</a>`;
 
     if (data.loggedIn) {
         const name = data.name || data.email.split('@')[0];
@@ -182,15 +187,16 @@ fetch(`${BACKEND_URL}/api/items/recent`, {
         }
 
         // Updated Navbar
-        nav.innerHTML = `
-            ${baseNav}
-            <a href="/requests">Requests</a>
-            <a href="/my-items">My Items</a>
-            ${isAdmin ? `<a href="/admin/dashboard" onclick="window.location.href='/admin/dashboard'; return true;" style="color:#ff4757; font-weight:800; cursor:pointer;">Admin Panel</a>` : ''}
-            <div class="user-section">
-                <span class="user-name"><i class="fas fa-user-circle"></i> ${name}</span>
-                <a href="/logout" class="logout-btn">Logout</a>
-            </div>`;
+nav.innerHTML = `
+    ${baseNav}
+    <a href="/requests.html">Requests</a>
+    <a href="/my-items.html">My Items</a>
+    ${isAdmin ? `<a href="https://giving-tree-backend.onrender.com/admin/dashboard" style="color:#ff4757; font-weight:800; cursor:pointer;">Admin Panel</a>` : ''}
+    <div class="user-section">
+        <span class="user-name"><i class="fas fa-user-circle"></i> ${name}</span>
+        <a href="https://giving-tree-backend.onrender.com/logout" class="logout-btn">Logout</a>
+    </div>
+`;
 
         // Updated Welcome Header with User Stats
         welcome.innerHTML = `
