@@ -136,11 +136,12 @@
     <div class="navbar">
         <div class="logo">🌳 Giving Tree</div>
         <nav class="nav-links">
-            <a href="/">Home</a>
-            <a href="/items">Browse</a>
-            <a href="/post-item">Give Item</a>
+           <a href="/index.html">Home</a>
+        <a href="/items.html">Browse</a>
+        <a href="/post-item.html">Give Item</a>
+        <a href="/my-items.html">My Items</a>
             <div class="user-section">
-                <a href="/logout" class="logout-btn">Logout</a>
+                <a href="https://giving-tree-backend.onrender.com/logout" class="logout-btn">Logout</a>
             </div>
         </nav>
     </div>
@@ -250,7 +251,7 @@ fetch(`${BACKEND_URL}/api/activity/data`, {
                 </span>
 
                 ${r.status === 'Pending' ? `
-                    <form action="/update-status" method="POST" class="update-form">
+                    <form action="https://giving-tree-backend.onrender.com/update-status" method="POST" class="update-form">
                         <input type="hidden" name="id" value="${r.id}">
 
                         <button name="status" value="Accepted"
